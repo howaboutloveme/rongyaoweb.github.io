@@ -49,14 +49,18 @@
             z-index: 1;
         }
 
-        header {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* 更新 header 样式 */
+header {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0; /* 减少上下内边距 */
+    margin-top: -10px; /* 增加向上的偏移 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: margin 0.3s ease; /* 添加平滑动画效果 */
+}
+
 
         main {
             background-color: rgba(255, 255, 255, 0.8);
