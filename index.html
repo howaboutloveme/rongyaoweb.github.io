@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>荣耀 - 我的世界</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
             padding: 0;
@@ -15,100 +16,104 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            position: relative; /* 为伪元素定位做准备 */
+            position: relative;
         }
-     .page1::before {
+
+        .page1::before, .page2::before {
             content: "";
-            background-image: url('board1.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: blur(5px); /* 对伪元素进行模糊处理 */
+            filter: blur(8px);
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: -1; /* 将伪元素置于内容层之下 */
+            z-index: -1;
+            animation: backgroundMove 20s infinite alternate;
         }
+
+        .page1::before {
+            background-image: url('board1.png');
+        }
+
+        .page2::before {
+            background-image: url('board2.png');
+        }
+
+        @keyframes backgroundMove {
+            0% { background-position: center; }
+            100% { background-position: center bottom; }
+        }
+
         header {
             background-color: rgba(51, 51, 51, 0.8);
             color: white;
             width: 100%;
             text-align: center;
             padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-       main,.page1 main {
-            /* 给元素添加一个背景模糊效果，同时添加一个半透明的白色背景以保证内容可见度 */
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 15px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            backdrop-filter: blur(10px); /* 这是实现毛玻璃效果的关键属性，模糊半径为 10px */
-            transition: opacity 0.5s ease-in-out; /* 为页面切换添加过渡效果 */
-        }
-     .page2::before {
-            content: "";
-            background-image: url('board2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(5px); /* 对伪元素进行模糊处理 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1; /* 将伪元素置于内容层之下 */
-        }
-       main,.page2 main {
-            /* 给元素添加一个背景模糊效果，同时添加一个半透明的白色背景以保证内容可见度 */
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 15px;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            backdrop-filter: blur(10px); /* 这是实现毛玻璃效果的关键属性，模糊半径为 10px */
-            transition: opacity 0.5s ease-in-out; /* 为页面切换添加过渡效果 */
-        }
+
         main {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(15px);
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        .page1 main {
+            transform: translateY(0);
             opacity: 1;
         }
-     .page2 main {
+
+        .page2 main {
+            transform: translateY(100%);
             opacity: 0;
         }
-        h1 {
-            margin-top: 0;
+
+        h1, h2 {
+            margin: 0;
+            font-weight: 600;
         }
+
         p {
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 16px;
+            color: #333;
         }
+
         button {
-            background-color: #4CAF50;
+            background: linear-gradient(45deg, #4CAF50, #3CB371);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
+
         button:hover {
-            background-color: #45a049;
+            background: linear-gradient(45deg, #3CB371, #45a049);
+            transform: scale(1.05);
         }
+
         @media screen and (max-width: 600px) {
             header {
                 padding: 10px 0;
             }
-            main,.page2 main {
-                padding: 10px;
-                border-radius: 5px;
+
+            main {
+                padding: 15px;
+                border-radius: 7px;
             }
+
             p {
-                font-size: 14px;
-            }
-            a {
-                padding: 8px 16px;
                 font-size: 14px;
             }
         }
@@ -122,11 +127,8 @@
     <main>
         <h2>荣耀巅峰服务器</h2>
         <p>在这里，你可以体验到最精彩的我的世界冒险之旅，与众多玩家一起探索、建造和战斗。我们拥有丰富的游戏内容，包括各种有趣的任务、独特的建筑和友好的玩家社区。无论你是新手还是老手，都能在荣耀服务器中找到属于自己的乐趣。</p>
-
     </main>
 </div>
-
-
 
 <div class="page2">
     <header>
@@ -137,11 +139,26 @@
         <p>扣扣群693700376</p>
     </main>
 </div>
+
 <script>
-    var currentPage = 1;
-    var page1 = document.querySelector('main');
-    var page2 = document.querySelector('.page2 main');
-    var startY;
+    let currentPage = 1;
+    const page1 = document.querySelector('.page1 main');
+    const page2 = document.querySelector('.page2 main');
+    let startY;
+
+    const showPage = (page) => {
+        if (page === 1) {
+            page1.style.transform = 'translateY(0)';
+            page1.style.opacity = '1';
+            page2.style.transform = 'translateY(100%)';
+            page2.style.opacity = '0';
+        } else {
+            page1.style.transform = 'translateY(-100%)';
+            page1.style.opacity = '0';
+            page2.style.transform = 'translateY(0)';
+            page2.style.opacity = '1';
+        }
+    };
 
     window.addEventListener('touchstart', function(event) {
         startY = event.touches[0].pageY;
@@ -149,43 +166,27 @@
 
     window.addEventListener('touchmove', function(event) {
         if (startY) {
-            var currentY = event.touches[0].pageY;
-            var deltaY = currentY - startY;
-            if (deltaY > 50) {
-                // 向下滑动，显示下一页
-                if (currentPage === 1) {
-                    page1.style.opacity = 0;
-                    page2.style.opacity = 1;
-                    currentPage = 2;
-                }
+            const currentY = event.touches[0].pageY;
+            const deltaY = currentY - startY;
+            if (deltaY > 50 && currentPage === 2) {
+                currentPage = 1;
+                showPage(1);
                 startY = null;
-            } else if (deltaY < -50) {
-                // 向上滑动，显示上一页
-                if (currentPage === 2) {
-                    page1.style.opacity = 1;
-                    page2.style.opacity = 0;
-                    currentPage = 1;
-                }
+            } else if (deltaY < -50 && currentPage === 1) {
+                currentPage = 2;
+                showPage(2);
                 startY = null;
             }
         }
     });
 
     window.addEventListener('wheel', function(event) {
-        if (event.deltaY < 0) {
-            // 向上滚动，显示上一页
-            if (currentPage === 2) {
-                page1.style.opacity = 1;
-                page2.style.opacity = 0;
-                currentPage = 1;
-            }
-        } else {
-            // 向下滚动，显示下一页
-            if (currentPage === 1) {
-                page1.style.opacity = 0;
-                page2.style.opacity = 1;
-                currentPage = 2;
-            }
+        if (event.deltaY < 0 && currentPage === 2) {
+            currentPage = 1;
+            showPage(1);
+        } else if (event.deltaY > 0 && currentPage === 1) {
+            currentPage = 2;
+            showPage(2);
         }
     });
 </script>
