@@ -125,15 +125,24 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        h1, h2 {
-            margin: 0;
-            font-weight: 600;
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            color: #333;
         }
 
-        p {
-            line-height: 1.8;
-            font-size: 16px;
-            color: #333;
+        footer img {
+            height: 30px;
+            margin-right: 10px;
         }
 
         @media screen and (max-width: 600px) {
@@ -156,6 +165,14 @@
 
             .profession-list, .profession-image {
                 width: 100%;
+            }
+
+            footer img {
+                height: 20px;
+            }
+
+            footer {
+                font-size: 12px;
             }
         }
     </style>
@@ -189,7 +206,7 @@
         <div class="profession-list">
             <button class="active" data-image="ysfs.jpg">元素法师</button>
             <button data-image="shz.jpg">噬魂者</button>
-            <button data-image="kzs.jpg">狂战士</button>
+            <button data-image="hzs.jpg">狂战士</button>
             <button data-image="lts.jpg">雷霆士</button>
         </div>
         <div class="profession-image">
@@ -197,6 +214,11 @@
         </div>
     </main>
 </div>
+
+<footer>
+    <img src="logo.jpg" alt="Logo">
+    <span>@华夏工作室2025</span>
+</footer>
 
 <script>
     let currentPage = 1;
