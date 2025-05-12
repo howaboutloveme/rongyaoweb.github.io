@@ -54,6 +54,12 @@
             text-align: center;
             padding: 20px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.6s ease; /* 添加平滑过渡效果 */
+        }
+
+        header.hidden {
+            opacity: 0; /* 隐藏时透明度设置为 0 */
+            pointer-events: none; /* 禁用交互 */
         }
 
         main {
@@ -121,7 +127,7 @@
 </head>
 <body>
 <div class="page1">
-    <header>
+    <header id="header-page1">
         <h1>荣耀巅峰</h1>
     </header>
     <main>
@@ -131,8 +137,8 @@
 </div>
 
 <div class="page2">
-    <header>
-        <h1>关于我们..</h1>
+    <header id="header-page2" class="hidden">
+        <h1>关于我们</h1>
     </header>
     <main>
         <h2>玩家聚集地</h2>
@@ -144,19 +150,31 @@
     let currentPage = 1;
     const page1 = document.querySelector('.page1 main');
     const page2 = document.querySelector('.page2 main');
+    const headerPage1 = document.getElementById('header-page1');
+    const headerPage2 = document.getElementById('header-page2');
     let startY;
 
     const showPage = (page) => {
         if (page === 1) {
+            // 显示页面1，隐藏页面2
             page1.style.transform = 'translateY(0)';
             page1.style.opacity = '1';
             page2.style.transform = 'translateY(100%)';
             page2.style.opacity = '0';
+
+            // 显示页面1的标题，隐藏页面2的标题
+            headerPage1.classList.remove('hidden');
+            headerPage2.classList.add('hidden');
         } else {
+            // 显示页面2，隐藏页面1
             page1.style.transform = 'translateY(-100%)';
             page1.style.opacity = '0';
             page2.style.transform = 'translateY(0)';
             page2.style.opacity = '1';
+
+            // 显示页面2的标题，隐藏页面1的标题
+            headerPage1.classList.add('hidden');
+            headerPage2.classList.remove('hidden');
         }
     };
 
