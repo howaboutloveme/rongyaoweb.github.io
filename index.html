@@ -33,26 +33,23 @@
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-       
-   
-    .page1 {
-        background-image: url('board1.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 2;
-        filter: black(8px); /* 增加模糊效果 */
-    }
+        .page1 {
+            background-image: url('board1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+            filter: blur(8px); /* 增加模糊效果 */
+        }
 
-    .page2, .page3 {
-        background-image: url('board2.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 1;
-        filter: black(8px); /* 增加模糊效果 */
-    }
-
+        .page2, .page3 {
+            background-image: url('board2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            filter: blur(8px); /* 增加模糊效果 */
+        }
 
         header {
             background-color: rgba(51, 51, 51, 0.8);
@@ -130,24 +127,28 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        footer {
+        .logo-container {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
+            top: 10px; /* 距离页面顶部 10px */
+            left: 10px; /* 距离页面左侧 10px */
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 10px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-            font-size: 14px;
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明背景 */
+            padding: 5px 10px;
+            border-radius: 5px; /* 圆角效果 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加阴影 */
+            z-index: 9999; /* 确保在所有内容之上 */
         }
 
-        footer img {
-            height: 30px;
-            margin-right: 10px;
+        .logo-container img {
+            height: 30px; /* 设置 logo 图片高度 */
+            margin-right: 8px; /* 图片和文字之间的间距 */
+        }
+
+        .logo-container span {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
         }
 
         @media screen and (max-width: 600px) {
@@ -172,124 +173,124 @@
                 width: 100%;
             }
 
-            footer img {
+            .logo-container img {
                 height: 20px;
             }
 
-            footer {
+            .logo-container span {
                 font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
-<div class="page page1">
-    <header>
-        <h1>荣耀巅峰</h1>
-    </header>
-    <main>
-        <h2>荣耀巅峰服务器</h2>
-        <p>在这里，你可以体验到最精彩的我的世界冒险之旅，与众多玩家一起探索、建造和战斗。我们拥有丰富的游戏内容，包括各种有趣的任务、独特的建筑和友好的玩家社区。无论你是新手还是老手，都能在荣耀服务器中找到属于自己的乐趣。</p>
-    </main>
-</div>
+    <div class="page page1">
+        <header>
+            <h1>荣耀巅峰</h1>
+        </header>
+        <main>
+            <h2>荣耀巅峰服务器</h2>
+            <p>在这里，你可以体验到最精彩的我的世界冒险之旅，与众多玩家一起探索、建造和战斗。我们拥有丰富的游戏内容，包括各种有趣的任务、独特的建筑和友好的玩家社区。无论你是新手还是老手，都能在荣耀服务器中找到属于自己的乐趣。</p>
+        </main>
+    </div>
 
-<div class="page page2 hidden">
-    <header>
-        <h1>关于我们</h1>
-    </header>
-    <main>
-        <h2>玩家聚集地</h2>
-        <p>扣扣群693700376</p>
-    </main>
-</div>
+    <div class="page page2 hidden">
+        <header>
+            <h1>关于我们</h1>
+        </header>
+        <main>
+            <h2>玩家聚集地</h2>
+            <p>扣扣群693700376</p>
+        </main>
+    </div>
 
-<div class="page page3 hidden">
-    <header>
-        <h1>职业展示</h1>
-    </header>
-    <main class="page3-content">
-        <div class="profession-list">
-            <button class="active" data-image="ysfs.jpg">元素法师</button>
-            <button data-image="shz.jpg">噬魂者</button>
-            <button data-image="kzs.jpg">狂战士</button>
-            <button data-image="lts.jpg">雷霆士</button>
-        </div>
-        <div class="profession-image">
-            <img id="profession-image" src="ysfs.jpg" alt="职业图片">
-        </div>
-    </main>
-</div>
+    <div class="page page3 hidden">
+        <header>
+            <h1>职业展示</h1>
+        </header>
+        <main class="page3-content">
+            <div class="profession-list">
+                <button class="active" data-image="ysfs.jpg">元素法师</button>
+                <button data-image="shz.jpg">噬魂者</button>
+                <button data-image="kzs.jpg">狂战士</button>
+                <button data-image="lts.jpg">雷霆士</button>
+            </div>
+            <div class="profession-image">
+                <img id="profession-image" src="ysfs.jpg" alt="职业图片">
+            </div>
+        </main>
+    </div>
 
-<footer>
-    <img src="logo.jpg" alt="Logo">
-    <span>@华夏工作室2025</span>
-</footer>
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Logo">
+        <span>@华夏工作室2025</span>
+    </div>
 
-<script>
-    let currentPage = 1;
-    const page1 = document.querySelector('.page1');
-    const page2 = document.querySelector('.page2');
-    const page3 = document.querySelector('.page3');
-    let startY;
+    <script>
+        let currentPage = 1;
+        const page1 = document.querySelector('.page1');
+        const page2 = document.querySelector('.page2');
+        const page3 = document.querySelector('.page3');
+        let startY;
 
-    const showPage = (page) => {
-        page1.classList.add('hidden');
-        page2.classList.add('hidden');
-        page3.classList.add('hidden');
+        const showPage = (page) => {
+            page1.classList.add('hidden');
+            page2.classList.add('hidden');
+            page3.classList.add('hidden');
 
-        if (page === 1) {
-            page1.classList.remove('hidden');
-        } else if (page === 2) {
-            page2.classList.remove('hidden');
-        } else if (page === 3) {
-            page3.classList.remove('hidden');
-        }
-    };
+            if (page === 1) {
+                page1.classList.remove('hidden');
+            } else if (page === 2) {
+                page2.classList.remove('hidden');
+            } else if (page === 3) {
+                page3.classList.remove('hidden');
+            }
+        };
 
-    const professionButtons = document.querySelectorAll('.profession-list button');
-    const professionImage = document.getElementById('profession-image');
+        const professionButtons = document.querySelectorAll('.profession-list button');
+        const professionImage = document.getElementById('profession-image');
 
-    professionButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 更新图片
-            const imageSrc = button.getAttribute('data-image');
-            professionImage.src = imageSrc;
+        professionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 更新图片
+                const imageSrc = button.getAttribute('data-image');
+                professionImage.src = imageSrc;
 
-            // 更新选中状态
-            professionButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+                // 更新选中状态
+                professionButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
         });
-    });
 
-    window.addEventListener('touchstart', function(event) {
-        startY = event.touches[0].pageY;
-    });
+        window.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].pageY;
+        });
 
-    window.addEventListener('touchmove', function(event) {
-        if (startY) {
-            const currentY = event.touches[0].pageY;
-            const deltaY = currentY - startY;
-            if (deltaY > 50) {
+        window.addEventListener('touchmove', function(event) {
+            if (startY) {
+                const currentY = event.touches[0].pageY;
+                const deltaY = currentY - startY;
+                if (deltaY > 50) {
+                    currentPage = Math.max(1, currentPage - 1);
+                    showPage(currentPage);
+                    startY = null;
+                } else if (deltaY < -50) {
+                    currentPage = Math.min(3, currentPage + 1);
+                    showPage(currentPage);
+                    startY = null;
+                }
+            }
+        });
+
+        window.addEventListener('wheel', function(event) {
+            if (event.deltaY < 0) {
                 currentPage = Math.max(1, currentPage - 1);
                 showPage(currentPage);
-                startY = null;
-            } else if (deltaY < -50) {
+            } else {
                 currentPage = Math.min(3, currentPage + 1);
                 showPage(currentPage);
-                startY = null;
             }
-        }
-    });
-
-    window.addEventListener('wheel', function(event) {
-        if (event.deltaY < 0) {
-            currentPage = Math.max(1, currentPage - 1);
-            showPage(currentPage);
-        } else {
-            currentPage = Math.min(3, currentPage + 1);
-            showPage(currentPage);
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
