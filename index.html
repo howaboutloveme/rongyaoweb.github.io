@@ -33,21 +33,26 @@
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .page1 {
-            background-image: url('board1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 2;
-        }
+       
+   
+    .page1 {
+        background-image: url('board1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 2;
+        filter: black(8px); /* 增加模糊效果 */
+    }
 
-        .page2, .page3 {
-            background-image: url('board2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-        }
+    .page2, .page3 {
+        background-image: url('board2.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        filter: black(8px); /* 增加模糊效果 */
+    }
+
 
         header {
             background-color: rgba(51, 51, 51, 0.8);
