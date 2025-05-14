@@ -7,80 +7,202 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* 防止页面滑动导致多余内容显示 */
+}
 
-        .page3-content {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: center;
-            width: 100%;
-            max-width: 1200px;
-        }
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
-        .profession-list {
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 20px;
-        }
+.page1 {
+    background-image: url('board1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: black(8px); /* 增加模糊效果 */
+}
 
-        .profession-list button {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            transition: background 0.3s ease;
-        }
+.page2, .page3 {
+    background-image: url('board2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    filter: black(8px); /* 增加模糊效果 */
+}
 
-        .profession-list button:hover {
-            background-color: rgba(77, 77, 77, 0.9);
-        }
+header {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: -50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: margin 0.3s ease;
+}
 
-        .profession-list .sub-list {
-            display: none;
-            padding-left: 20px;
-        }
+main {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(15px);
+}
 
-        .profession-list .sub-list button {
-            background-color: rgba(77, 77, 77, 0.8);
-        }
+.hidden {
+    opacity: 0;
+    transform: scale(0.95); /* 页面隐藏时缩小一点，增强视觉效果 */
+    pointer-events: none; /* 禁止交互 */
+}
 
-        .profession-list .sub-list button:hover {
-            background-color: rgba(99, 99, 99, 0.9);
-        }
+.page3-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
 
-        .profession-image {
-            width: 70%;
-            text-align: center;
-        }
+.profession-list {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
 
-        .profession-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+.profession-list button {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background 0.3s ease;
+}
+
+.profession-list button:hover {
+    background-color: rgba(77, 77, 77, 0.9);
+}
+
+.profession-list button.active {
+    background-color: #4CAF50;
+}
+
+.profession-image {
+    width: 70%;
+    text-align: center;
+}
+
+.profession-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px; /* 距离页面顶部 10px */
+    left: 10px; /* 距离页面左侧 10px */
+    display: flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    z-index: 9999; /* 确保在所有内容之上 */
+}
+
+.logo-container img {
+    height: 30px; /* 设置 logo 图片高度 */
+    margin-right: 8px; /* 图片和文字之间的间距 */
+}
+
+.logo-container span {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 10px 0;
+    }
+
+    main {
+        padding: 15px;
+        border-radius: 7px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .page3-content {
+        flex-direction: column;
+    }
+
+    .profession-list, .profession-image {
+        width: 100%;
+    }
+
+    .logo-container img {
+        height: 20px;
+    }
+
+    .logo-container span {
+        font-size: 12px;
+    }
+}
     </style>
 </head>
 <body>
+    <div class="page page1">
+        <header>
+            <h1>荣耀巅峰</h1>
+        </header>
+        <main>
+            <h2>荣耀巅峰服务器</h2>
+            <p>在这里，你可以体验到最精彩的我的世界冒险之旅，与众多玩家一起探索、建造和战斗。我们拥有丰富的游戏内容，包括各种有趣的任务、独特的建筑和友好的玩家社区。无论你是新手还是老手，都能在荣耀服务器中找到属于自己的乐趣。</p>
+        </main>
+    </div>
+
+    <div class="page page2 hidden">
+        <header>
+            <h1>关于我们</h1>
+        </header>
+        <main>
+            <h2>玩家聚集地</h2>
+            <p>扣扣群693700376</p>
+        </main>
+    </div>
+
     <div class="page page3">
         <header>
             <h1>职业展示</h1>
@@ -123,8 +245,79 @@
         </main>
     </div>
 
+ 
+
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Logo">
+        <span>@华夏工作室2025</span>
+    </div>
+
     <script>
-        const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
+        let currentPage = 1;
+        const page1 = document.querySelector('.page1');
+        const page2 = document.querySelector('.page2');
+        const page3 = document.querySelector('.page3');
+        let startY;
+
+        const showPage = (page) => {
+            page1.classList.add('hidden');
+            page2.classList.add('hidden');
+            page3.classList.add('hidden');
+
+            if (page === 1) {
+                page1.classList.remove('hidden');
+            } else if (page === 2) {
+                page2.classList.remove('hidden');
+            } else if (page === 3) {
+                page3.classList.remove('hidden');
+            }
+        };
+
+        const professionButtons = document.querySelectorAll('.profession-list button');
+        const professionImage = document.getElementById('profession-image');
+
+        professionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 更新图片
+                const imageSrc = button.getAttribute('data-image');
+                professionImage.src = imageSrc;
+
+                // 更新选中状态
+                professionButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        window.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].pageY;
+        });
+
+        window.addEventListener('touchmove', function(event) {
+            if (startY) {
+                const currentY = event.touches[0].pageY;
+                const deltaY = currentY - startY;
+                if (deltaY > 50) {
+                    currentPage = Math.max(1, currentPage - 1);
+                    showPage(currentPage);
+                    startY = null;
+                } else if (deltaY < -50) {
+                    currentPage = Math.min(3, currentPage + 1);
+                    showPage(currentPage);
+                    startY = null;
+                }
+            }
+        });
+
+        window.addEventListener('wheel', function(event) {
+            if (event.deltaY < 0) {
+                currentPage = Math.max(1, currentPage - 1);
+                showPage(currentPage);
+            } else {
+                currentPage = Math.min(3, currentPage + 1);
+                showPage(currentPage);
+            }
+        });
+const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
         const subLists = document.querySelectorAll('.sub-list');
         const professionImage = document.getElementById('profession-image');
 
