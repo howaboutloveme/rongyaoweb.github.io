@@ -253,6 +253,7 @@ main {
     </div>
 
     <script>
+    // 页面切换逻辑
     let currentPage = 1;
     const page1 = document.querySelector('.page1');
     const page2 = document.querySelector('.page2');
@@ -303,11 +304,12 @@ main {
         }
     });
 
+    // 职业列表逻辑
     const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
     const subLists = document.querySelectorAll('.sub-list');
     const professionImage = document.getElementById('profession-image');
 
-    // 为每个职业按钮添加点击事件
+    // 为每个主职业按钮添加点击事件
     roleButtons.forEach(button => {
         button.addEventListener('click', () => {
             const subList = button.nextElementSibling;
