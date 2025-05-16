@@ -1,6 +1,6 @@
-/* 隐藏子职业列表 */
+
 .sub-list {
-    display: none;
+    display: none; /* 默认隐藏子职业列表 */
     padding-left: 20px;
 }
 
@@ -16,10 +16,88 @@ body {
     justify-content: center;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* 防止页面滑动导致多余内容显示 */
 }
 
-/* 主职业按钮样式 */
+/* 页面动画样式 */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page1 {
+    background-image: url('board1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: blur(8px); /* 增加模糊效果 */
+}
+
+.page2, .page3 {
+    background-image: url('board2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    filter: blur(8px); /* 增加模糊效果 */
+}
+
+/* 标题和主内容样式 */
+header {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: -50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: margin 0.3s ease;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(15px);
+}
+
+/* 隐藏页面时的效果 */
+.hidden {
+    opacity: 0;
+    transform: scale(0.95); /* 页面隐藏时缩小一点，增强视觉效果 */
+    pointer-events: none; /* 禁止交互 */
+}
+
+/* 职业列表样式 */
+.page3-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.profession-list {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* 职业按钮样式 */
 .profession-list button {
     background-image: linear-gradient(45deg, #ff6b6b, #f0c27b, #76b852);
     background-size: 300% 300%;
@@ -33,11 +111,8 @@ body {
     width: 100%;
     text-align: left;
     transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
-/* 动态渐变动画 */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -82,7 +157,7 @@ body {
     opacity: 0.8;
 }
 
-/* 图片展示区域样式 */
+/* 职业图片样式 */
 .profession-image img {
     max-width: 100%;
     height: auto;
@@ -93,4 +168,58 @@ body {
 
 .profession-image img:hover {
     transform: scale(1.05); /* 放大图片 */
+}
+
+/* LOGO 样式 */
+.logo-container {
+    position: absolute;
+    top: 10px; /* 距离页面顶部 10px */
+    left: 10px; /* 距离页面左侧 10px */
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    z-index: 9999; /* 确保在所有内容之上 */
+}
+
+.logo-container img {
+    height: 30px; /* 设置 logo 图片高度 */
+    margin-right: 8px; /* 图片和文字之间的间距 */
+}
+
+.logo-container span {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 响应式样式 */
+@media screen and (max-width: 600px) {
+    header {
+        padding: 10px 0;
+    }
+
+    main {
+        padding: 15px;
+        border-radius: 7px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .page3-content {
+        flex-direction: column;
+    }
+
+    .profession-list, .profession-image {
+        width: 100%;
+    }
+
+    .logo-container img {
+        height: 20px;
+    }
+
+    .logo-container span {
+        font-size: 12px;
+    }
 }
