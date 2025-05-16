@@ -5,63 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>荣耀 - 我的世界</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        .sub-list {
-            display: none; /* 默认隐藏子职业列表 */
-            padding-left: 20px;
-        }
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            position: relative;
-            overflow: hidden; /* 防止页面滑动导致多余内容显示 */
-        }
-        /* 原始CSS部分... */
-
-        .profession-list button {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            transition: background 0.3s ease;
-        }
-
-        /* 动态渐变色和点击动画部分 */
-        .profession-list button, .profession-list .sub-list button {
-            background-image: linear-gradient(45deg, #ff6b6b, #f0c27b, #76b852);
-            background-size: 300% 300%;
-            animation: gradientAnimation 3s ease infinite;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .profession-list button:active, .profession-list .sub-list button:active {
-            transform: scale(0.95);
-            opacity: 0.8;
-        }
-
-        /* 保留原始CSS */
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- 引入外部 CSS 文件 -->
 </head>
 <body>
-    
     <div class="page page1">
         <header>
             <h1>荣耀巅峰</h1>
@@ -124,31 +70,11 @@
         </main>
     </div>
 
-    <script>
-        // 原始逻辑代码
-        const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
-        const subLists = document.querySelectorAll('.sub-list');
-        const professionImage = document.getElementById('profession-image');
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Logo">
+        <span>@华夏工作室2025</span>
+    </div>
 
-        roleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const subList = button.nextElementSibling;
-                if (subList.style.display === 'block') {
-                    subList.style.display = 'none';
-                } else {
-                    subLists.forEach(list => list.style.display = 'none');
-                    subList.style.display = 'block';
-                }
-            });
-        });
-
-        const subButtons = document.querySelectorAll('.sub-list button');
-        subButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const imageSrc = button.getAttribute('data-image');
-                professionImage.src = imageSrc || '';
-            });
-        });
-    </script>
+    <script src="scripts.js"></script> <!-- 引入外部 JS 文件 -->
 </body>
 </html>
