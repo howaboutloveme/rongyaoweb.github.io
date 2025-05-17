@@ -1,20 +1,20 @@
-/* 全局样式 - 保留翻页效果的关键代码 */
+/* 全局样式 */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     position: relative;
-    overflow-x: hidden; /* 防止横向滚动 */
+    overflow-x: hidden;
 }
 
-/* 核心翻页效果（必须保留的部分） */
+/* 翻页效果（核心保留） */
 .page {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100vh; /* 替换原来的height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +44,37 @@ body {
     pointer-events: none;
 }
 
-/* 内容区域优化（适配移动端） */
+/* 左上角小型LOGO */
+.logo-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.logo-container img {
+    height: 20px;
+    width: 20px;
+    margin-right: 6px;
+    object-fit: contain;
+}
+
+.logo-container span {
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.5px;
+}
+
+/* 内容区域 */
 header {
     background-color: rgba(51, 51, 51, 0.8);
     color: white;
@@ -63,10 +93,10 @@ main {
     backdrop-filter: blur(15px);
     width: calc(100% - 40px);
     margin: 15px auto;
-    max-width: 800px; /* 增加最大宽度限制 */
+    max-width: 800px;
 }
 
-/* 职业列表布局 */
+/* 职业列表 */
 .page3-content {
     display: flex;
     flex-direction: row;
@@ -83,7 +113,7 @@ main {
     padding: 10px;
 }
 
-/* 按钮样式（保留动画效果） */
+/* 按钮样式 */
 .profession-list button {
     background-image: linear-gradient(45deg, #ff6b6b, #f0c27b, #76b852);
     background-size: 300% 300%;
@@ -110,7 +140,7 @@ main {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* 子菜单样式 */
+/* 子菜单 */
 .sub-list {
     max-height: 0;
     opacity: 0;
@@ -141,18 +171,10 @@ main {
     transition: transform 0.3s ease;
 }
 
-/* LOGO样式 */
-.logo-container {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1000;
-}
-
-/* 响应式设计 - 移动端适配 */
+/* 响应式设计 */
 @media screen and (max-width: 768px) {
     .page {
-        padding-top: 60px; /* 给LOGO留出空间 */
+        padding-top: 50px;
     }
 
     .page3-content {
@@ -165,27 +187,40 @@ main {
     }
 
     .profession-image {
-        order: -1; /* 图片在上方 */
+        order: -1;
         margin-bottom: 20px;
     }
 
-    .profession-list button {
-        padding: 10px 12px;
-        font-size: 14px;
+    /* 移动端LOGO微调 */
+    .logo-container {
+        top: 8px;
+        left: 8px;
+        padding: 3px 6px;
+    }
+    
+    .logo-container img {
+        height: 18px;
+        width: 18px;
+    }
+    
+    .logo-container span {
+        font-size: 11px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    main {
-        padding: 15px !important;
-    }
-
-    header h1 {
-        font-size: 22px;
-    }
-
     .logo-container {
-        top: 10px;
-        left: 10px;
+        top: 6px;
+        left: 6px;
+        border-radius: 12px;
+    }
+    
+    .logo-container img {
+        height: 16px;
+        width: 16px;
+    }
+    
+    .logo-container span {
+        font-size: 10px;
     }
 }
