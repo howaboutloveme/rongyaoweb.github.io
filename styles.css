@@ -6,9 +6,10 @@ body {
     padding: 0;
     position: relative;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* 翻页效果（核心保留） */
+/* 翻页效果 */
 .page {
     position: absolute;
     top: 0;
@@ -24,19 +25,8 @@ body {
     box-sizing: border-box;
 }
 
-.page1 {
-    background-image: url('board1.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 2;
-}
-
-.page2, .page3 {
-    background-image: url('board2.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
+.page1 { background: url('board1.png') center/cover; z-index: 2; }
+.page2, .page3 { background: url('board2.png') center/cover; z-index: 1; }
 
 .hidden {
     opacity: 0;
@@ -44,7 +34,7 @@ body {
     pointer-events: none;
 }
 
-/* 左上角小型LOGO */
+/* 左上角LOGO */
 .logo-container {
     position: fixed;
     top: 10px;
@@ -52,10 +42,10 @@ body {
     z-index: 1000;
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255,255,255,0.9);
     border-radius: 15px;
     padding: 4px 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     backdrop-filter: blur(5px);
 }
 
@@ -70,25 +60,23 @@ body {
     font-size: 12px;
     color: #333;
     font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.5px;
 }
 
 /* 内容区域 */
 header {
-    background-color: rgba(51, 51, 51, 0.8);
+    background: rgba(51,51,51,0.8);
     color: white;
     width: 100%;
     text-align: center;
     padding: 12px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 main {
-    background-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255,255,255,0.8);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     text-align: center;
     backdrop-filter: blur(15px);
     width: calc(100% - 40px);
@@ -96,69 +84,89 @@ main {
     max-width: 800px;
 }
 
-/* 职业列表 */
-.page3-content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-}
-
+/* 职业列表 - 桌面端样式 */
 .profession-list {
     width: 30%;
     display: flex;
     flex-direction: column;
+    gap: 8px;
     padding: 10px;
 }
 
-/* 按钮样式 */
-.profession-list button {
-    background-image: linear-gradient(45deg, #ff6b6b, #f0c27b, #76b852);
+.profession-list > button {
+    background: linear-gradient(45deg, #ff6b6b, #f0c27b, #76b852);
     background-size: 300% 300%;
     animation: gradientAnimation 3s ease infinite;
     color: white;
     border: none;
     padding: 12px 15px;
-    margin: 6px 0;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    width: 100%;
     text-align: left;
     transition: all 0.3s ease;
+    position: relative;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+/* 子列表动画效果 */
+.sub-list {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-left: 12px;
+    border-left: 2px dashed rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+
+.sub-list.active {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.sub-list button {
+    background: linear-gradient(45deg, #76b852, #f0c27b, #ff6b6b);
+    background-size: 300% 300%;
+    animation: gradientAnimation 3s ease infinite;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+/* 交互效果 */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-.profession-list button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.profession-list > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-/* 子菜单 */
-.sub-list {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    padding-left: 15px;
+.profession-list > button::after {
+    content: "▶";
+    position: absolute;
+    right: 15px;
+    transition: transform 0.3s ease;
 }
 
-.sub-list.active {
-    max-height: 500px;
-    opacity: 1;
+.profession-list > button.active::after {
+    transform: rotate(90deg);
 }
 
-.profession-list .sub-list button {
-    background-image: linear-gradient(45deg, #76b852, #f0c27b, #ff6b6b);
+.sub-list button:hover {
+    transform: translateX(5px);
 }
 
-/* 图片区域 */
+/* 职业图片区域 */
 .profession-image {
     width: 60%;
     padding: 15px;
@@ -167,8 +175,12 @@ main {
 .profession-image img {
     max-width: 100%;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
+}
+
+.profession-image img:hover {
+    transform: scale(1.05);
 }
 
 /* 响应式设计 */
@@ -191,7 +203,7 @@ main {
         margin-bottom: 20px;
     }
 
-    /* 移动端LOGO微调 */
+    /* 移动端LOGO */
     .logo-container {
         top: 8px;
         left: 8px;
@@ -206,13 +218,23 @@ main {
     .logo-container span {
         font-size: 11px;
     }
+
+    /* 移动端列表优化 */
+    .profession-list > button {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    .sub-list button {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width: 480px) {
     .logo-container {
         top: 6px;
         left: 6px;
-        border-radius: 12px;
     }
     
     .logo-container img {
@@ -222,5 +244,14 @@ main {
     
     .logo-container span {
         font-size: 10px;
+    }
+
+    .profession-list > button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    
+    .sub-list {
+        padding-left: 8px;
     }
 }
