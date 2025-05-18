@@ -17,7 +17,6 @@ body {
     overflow: hidden;
 }
 
-/* 新增：初始化页面样式，避免层级错乱 */
 .page {
     position: absolute;
     top: 0;
@@ -28,30 +27,34 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    /* 关键修复：初始化透明度和缩放，确保层级正常 */
     opacity: 1;
     transform: scale(1);
-    
     transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative; /* 新增：定位伪元素 */
 }
 
-.page1 {
+/* 背景层伪元素（模糊效果） */
+.page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    z-index: -1; /* 背景层在内容下方 */
+}
+
+.page1::before {
     background-image: url('board1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 2;
-    filter: blur(8px);
 }
 
-.page2, .page3 {
+.page2::before,
+.page3::before {
     background-image: url('board2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    filter: blur(8px);
 }
 
 header {
@@ -71,15 +74,13 @@ main {
     border-radius: 10px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px); /* 内容层毛玻璃效果（可选） */
 }
 
-/* 优化：隐藏状态仅改变透明度和缩放，不影响层级 */
 .hidden {
     opacity: 0;
     transform: scale(0.95);
     pointer-events: none;
-    /* 移除 z-index 调整，避免层级闪烁 */
 }
 
 .page3-content {
@@ -153,6 +154,53 @@ main {
     font-weight: bold;
 }
 
+/* 滑动按钮样式 */
+.scroll-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4CAF50, #2e86c1);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.down-btn {
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.up-btn {
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-btn .arrow {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.scroll-btn:hover .arrow {
+    transform: scale(1.2);
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* 移动端适配 */
 @media screen and (max-width: 600px) {
     header {
         padding: 10px 0;
@@ -182,60 +230,7 @@ main {
     .logo-container span {
         font-size: 12px;
     }
-}
 
-/* 滑动按钮基础样式 */
-.scroll-btn {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #4CAF50, #2e86c1);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    font-size: 24px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-/* 向下按钮初始位置（中下） */
-.down-btn {
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* 向上按钮位置（中上，初始隐藏） */
-.up-btn {
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* 按钮动画效果 */
-.scroll-btn .arrow {
-    transform: scale(1);
-    transition: transform 0.3s ease;
-}
-
-.scroll-btn:hover .arrow {
-    transform: scale(1.2);
-}
-
-/* 隐藏状态 */
-.hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-}
-
-/* 移动端适配 */
-@media screen and (max-width: 600px) {
     .scroll-btn {
         width: 40px;
         height: 40px;
