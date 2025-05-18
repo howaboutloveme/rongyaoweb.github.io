@@ -1,7 +1,3 @@
-.sub-list {
-    display: none; /* 默认隐藏子职业列表 */
-    padding-left: 20px;
-}
         body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f0f0f0;
