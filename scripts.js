@@ -5,6 +5,9 @@ const page2 = document.querySelector('.page2');
 const page3 = document.querySelector('.page3');
 let startY;
 
+// 新增：初始化时强制显示当前页（避免刷新时隐藏状态残留）
+showPage(currentPage);
+
 const showPage = (page) => {
     page1.classList.add('hidden');
     page2.classList.add('hidden');
@@ -49,31 +52,27 @@ window.addEventListener('wheel', function(event) {
     }
 });
 
-// 职业列表逻辑
+// 职业列表逻辑（无变化）
 const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
 const subLists = document.querySelectorAll('.sub-list');
 const professionImage = document.getElementById('profession-image');
 
-// 为每个主职业按钮添加点击事件
 roleButtons.forEach(button => {
     button.addEventListener('click', () => {
         const subList = button.nextElementSibling;
-
-        // 显示或隐藏子列表
         if (subList.style.display === 'block') {
             subList.style.display = 'none';
         } else {
-            subLists.forEach(list => list.style.display = 'none'); // 隐藏其他子列表
+            subLists.forEach(list => list.style.display = 'none');
             subList.style.display = 'block';
         }
     });
 });
 
-// 为每个子职业按钮添加点击事件
 const subButtons = document.querySelectorAll('.sub-list button');
 subButtons.forEach(button => {
     button.addEventListener('click', () => {
         const imageSrc = button.getAttribute('data-image');
-        professionImage.src = imageSrc || ''; // 更新图片路径
+        professionImage.src = imageSrc || '';
     });
 });
