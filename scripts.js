@@ -77,42 +77,4 @@ subButtons.forEach(button => {
     });
 });
 
-// 获取按钮元素
-const scrollDownBtn = document.getElementById('scrollDownBtn');
-const scrollUpBtn = document.getElementById('scrollUpBtn');
-
-// 初始化按钮状态
-function updateButtonVisibility() {
-    if (currentPage === 3) {
-        // 最后一页：显示向上按钮，隐藏向下按钮
-        scrollDownBtn.classList.add('hidden');
-        scrollUpBtn.classList.remove('hidden');
-    } else {
-        // 非最后一页：显示向下按钮，隐藏向上按钮
-        scrollDownBtn.classList.remove('hidden');
-        scrollUpBtn.classList.add('hidden');
-    }
-}
-
-// 按钮点击事件
-scrollDownBtn.addEventListener('click', () => {
-    currentPage = Math.min(3, currentPage + 1);
-    showPage(currentPage);
-    updateButtonVisibility(); // 更新按钮状态
-});
-
-scrollUpBtn.addEventListener('click', () => {
-    currentPage = Math.max(1, currentPage - 1);
-    showPage(currentPage);
-    updateButtonVisibility(); // 更新按钮状态
-});
-
-// 初始调用（确保页面加载时按钮状态正确）
-updateButtonVisibility();
-
-// 在页面切换逻辑中补充调用（确保切换页面时按钮更新）
-function showPage(page) {
-    // 原有逻辑...
-    updateButtonVisibility(); // 页面切换后更新按钮状态
-}
 
