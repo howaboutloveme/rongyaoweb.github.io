@@ -35,7 +35,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 2;
-    filter: blur(8px); /* 修正模糊属性名 */
+   
 }
 
 .page2, .page3 {
@@ -44,7 +44,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
-    filter: blur(8px); /* 修正模糊属性名 */
+    
 }
 
 header {
