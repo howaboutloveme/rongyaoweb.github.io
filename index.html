@@ -203,47 +203,61 @@ main {
         </main>
     </div>
 
-    <div class="page page3">
-        <header>
-            <h1>职业展示</h1>
-        </header>
-        <main class="page3-content">
-            <div class="profession-list">
-                <button data-role="warrior">战士</button>
-                <div class="sub-list">
-                    <button data-image="kzs.jpg">狂战士</button>
-                    <button data-image="shs.jpg">噬魂士</button>
-                </div>
-                <button data-role="gunner">魔枪士</button>
-                <div class="sub-list">
-                    <button data-image="lt.jpg">雷霆</button>
-                </div>
-                <button data-role="assassin">刺客</button>
-                <div class="sub-list">
-                    <button>忍影者</button>
-                </div>
-                <button data-role="archer">弓箭手</button>
-                <div class="sub-list">
-                    <button data-image="jyl.jpg">烬羽灵</button>
-                </div>
-                <button data-role="mage">魔法师</button>
-                <div class="sub-list">
-                    <button data-image="ysfs.jpg">元素法师</button>
-                </div>
-                <button data-role="paladin">圣骑士</button>
-                <div class="sub-list">
-                    <button data-image="ty.jpg">铁驭</button>
-                </div>
-                <button data-role="saint">圣使者</button>
-                <div class="sub-list">
-                    <button data-image="sn.jpg">圣女</button>
-                </div>
+    <!-- HTML部分 -->
+<div class="page page3 hidden">
+    <header>
+        <h1>职业展示</h1>
+    </header>
+    <main class="page3-content">
+        <div class="profession-list">
+            <!-- 战士 -->
+            <button class="main-role" data-role="warrior">战士</button>
+            <div class="sub-list">
+                <button class="sub-role active" data-image="kzs.jpg">狂战士</button>
+                <button class="sub-role" data-image="shs.jpg">噬魂士</button>
             </div>
-            <div class="profession-image">
-                <img id="profession-image" src="" alt="职业图片">
+
+            <!-- 魔枪士 -->
+            <button class="main-role" data-role="gunner">魔枪士</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="lt.jpg">雷霆</button>
             </div>
-        </main>
-    </div>
+
+            <!-- 刺客 -->
+            <button class="main-role" data-role="assassin">刺客</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="ryz.jpg">忍影者</button>
+            </div>
+
+            <!-- 弓箭手 -->
+            <button class="main-role" data-role="archer">弓箭手</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="jyl.jpg">烬羽灵</button>
+            </div>
+
+            <!-- 魔法师 -->
+            <button class="main-role" data-role="mage">魔法师</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="ysfs.jpg">元素法师</button>
+            </div>
+
+            <!-- 圣骑士 -->
+            <button class="main-role" data-role="paladin">圣骑士</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="ty.jpg">铁驭</button>
+            </div>
+
+            <!-- 圣使者 -->
+            <button class="main-role" data-role="saint">圣使者</button>
+            <div class="sub-list">
+                <button class="sub-role" data-image="sn.jpg">圣女</button>
+            </div>
+        </div>
+        <div class="profession-image">
+            <img id="profession-image" src="kzs.jpg" alt="职业图片">
+        </div>
+    </main>
+</div>
 
 
 
