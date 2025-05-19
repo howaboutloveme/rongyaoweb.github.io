@@ -86,33 +86,31 @@ main {
     max-width: 1200px;
 }
 
-.profession-list {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-}
-
-.profession-list button {
-    background-color: rgba(51, 51, 51, 0.8);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px 0;
-    border-radius: 5px;
-    cursor: pointer;
+/* CSS修改部分 */
+.profession-list .sub-list {
+    display: none; /* 默认隐藏子列表 */
     width: 100%;
-    text-align: left;
-    transition: background 0.3s ease;
+    padding-left: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.profession-list button:hover {
-    background-color: rgba(77, 77, 77, 0.9);
+.profession-list .sub-list.show {
+    display: block;
 }
 
-.profession-list button.active {
+.profession-list .sub-role {
+    background-color: rgba(68, 68, 68, 0.8);
+    font-size: 0.9em;
+    margin: 3px 0;
+    padding: 8px 12px;
+}
+
+.profession-list .sub-role.active {
     background-color: #4CAF50;
+}
+
+.profession-list .main-role.active {
+    background-color: #3f8d3f;
 }
 
 .profession-image {
