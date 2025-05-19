@@ -359,6 +359,49 @@ const roleButtons = document.querySelectorAll('.profession-list > button[data-ro
                 professionImage.src = imageSrc || '';
             });
         });
+
+// JavaScript部分
+document.addEventListener('DOMContentLoaded', function() {
+    // 默认显示第一个子项
+    const defaultSub = document.querySelector('.sub-role.active');
+    if (defaultSub) {
+        defaultSub.closest('.sub-list').classList.add('show');
+    }
+
+    // 主菜单点击事件
+    document.querySelectorAll('.main-role').forEach(button => {
+        button.addEventListener('click', function() {
+            // 切换当前子菜单
+            const subList = this.nextElementSibling;
+            const isShowing = subList.classList.contains('show');
+            
+            // 关闭所有子菜单
+            document.querySelectorAll('.sub-list').forEach(list => {
+                list.classList.remove('show');
+                list.previousElementSibling.classList.remove('active');
+            });
+
+            // 切换当前状态
+            if (!isShowing) {
+                subList.classList.add('show');
+                this.classList.add('active');
+            }
+        });
+    });
+
+    // 子菜单点击事件
+    document.querySelectorAll('.sub-role').forEach(button => {
+        button.addEventListener('click', function() {
+            // 更新图片
+            const imageSrc = this.dataset.image;
+            document.getElementById('profession-image').src = imageSrc;
+
+            // 更新选中状态
+            document.querySelectorAll('.sub-role').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+});
     </script>
 </body>
 </html>
