@@ -6,169 +6,207 @@
     <title>荣耀 - 我的世界</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
 
-        .page {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+    .page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-        .page1 {
-            background-image: url('board1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 2;
-            filter: blur(8px);
-        }
+    .page1 {
+        background-image: url('board1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 2;
+        filter: blur(8px);
+    }
 
-        .page2, .page3 {
-            background-image: url('board2.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: 1;
-            filter: blur(8px);
-        }
+    .page2, .page3 {
+        background-image: url('board2.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        filter: blur(8px);
+    }
 
-        /* 新增列表样式 */
-        .profession-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            width: 300px;
-        }
+    header {
+        background-color: rgba(51, 51, 51, 0.8);
+        color: white;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        margin-top: -50px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: margin 0.3s ease;
+    }
 
-        .main-role {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    main {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        backdrop-filter: blur(15px);
+    }
 
-        .main-role.active {
-            background-color: #3f8d3f;
-        }
+    .hidden {
+        opacity: 0;
+        transform: scale(0.95);
+        pointer-events: none;
+    }
 
-        .role-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .page3-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        max-width: 1200px;
+    }
 
-        .sub-list {
-            display: none;
-            padding-left: 20px;
-        }
+    .profession-list {
+        width: 30%;
+        margin-right: 30px;
+    }
 
-        .sub-list.show {
-            display: block;
-        }
+    .profession-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
 
-        .sub-role {
-            background-color: rgba(68, 68, 68, 0.8);
-            color: white;
-            padding: 8px 12px;
-            margin: 3px 0;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    .main-role {
+        background-color: rgba(51, 51, 51, 0.8);
+        color: white;
+        padding: 12px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-        .sub-role.active {
-            background-color: #4CAF50;
-        }
+    .main-role.active {
+        background-color: #3f8d3f;
+    }
 
-        /* 保留原有其他样式 */
+    .role-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sub-list {
+        display: none;
+        padding-left: 20px;
+    }
+
+    .sub-list.show {
+        display: block;
+    }
+
+    .sub-role {
+        background-color: rgba(68, 68, 68, 0.8);
+        color: white;
+        padding: 8px 12px;
+        margin: 3px 0;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .sub-role.active {
+        background-color: #4CAF50;
+    }
+
+    .profession-image {
+        width: 70%;
+        text-align: center;
+    }
+
+    .profession-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        z-index: 9999;
+    }
+
+    .logo-container img {
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    .logo-container span {
+        font-size: 14px;
+        color: #333;
+        font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
         header {
-            background-color: rgba(51, 51, 51, 0.8);
-            color: white;
-            width: 100%;
-            text-align: center;
             padding: 10px 0;
-            margin-top: -50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: margin 0.3s ease;
         }
 
         main {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            backdrop-filter: blur(15px);
-        }
-
-        .hidden {
-            opacity: 0;
-            transform: scale(0.95);
-            pointer-events: none;
+            padding: 15px;
+            border-radius: 7px;
         }
 
         .page3-content {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: center;
+            flex-direction: column;
+        }
+
+        .profession-list {
             width: 100%;
-            max-width: 1200px;
+            margin-right: 0;
+            margin-bottom: 20px;
         }
 
         .profession-image {
-            width: 70%;
-            text-align: center;
+            width: 100%;
         }
 
-        .profession-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        .logo-container img {
+            height: 20px;
         }
 
-        .logo-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-            padding: 5px 10px;
-            z-index: 9999;
+        .logo-container span {
+            font-size: 12px;
         }
-
-        @media screen and (max-width: 600px) {
-            .page3-content {
-                flex-direction: column;
-            }
-            .profession-list ul {
-                width: 100%;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <!-- 页面1 -->
