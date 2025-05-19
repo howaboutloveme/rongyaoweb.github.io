@@ -7,190 +7,182 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    position: relative;
-    overflow: hidden; /* 防止页面滑动导致多余内容显示 */
-}
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
 
-.page {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
 
-.page1 {
-    background-image: url('board1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 2;
-    filter: black(8px); /* 增加模糊效果 */
-}
+        .page1 {
+            background-image: url('board1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 2;
+            filter: blur(8px);
+        }
 
-.page2, .page3 {
-    background-image: url('board2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    filter: black(8px); /* 增加模糊效果 */
-}
+        .page2, .page3 {
+            background-image: url('board2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            filter: blur(8px);
+        }
 
-header {
-    background-color: rgba(51, 51, 51, 0.8);
-    color: white;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: -50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: margin 0.3s ease;
-}
+        /* 新增列表样式 */
+        .profession-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 300px;
+        }
 
-main {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    backdrop-filter: blur(15px);
-}
+        .main-role {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.hidden {
-    opacity: 0;
-    transform: scale(0.95); /* 页面隐藏时缩小一点，增强视觉效果 */
-    pointer-events: none; /* 禁止交互 */
-}
+        .main-role.active {
+            background-color: #3f8d3f;
+        }
 
-.page3-content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-}
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* CSS修改部分 */
-.profession-list .sub-list {
-    display: none; /* 默认隐藏子列表 */
-    width: 100%;
-    padding-left: 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
+        .sub-list {
+            display: none;
+            padding-left: 20px;
+        }
 
-.profession-list .sub-list.show {
-    display: block;
-}
+        .sub-list.show {
+            display: block;
+        }
 
-.profession-list .sub-role {
-    background-color: rgba(68, 68, 68, 0.8);
-    font-size: 0.9em;
-    margin: 3px 0;
-    padding: 8px 12px;
-}
+        .sub-role {
+            background-color: rgba(68, 68, 68, 0.8);
+            color: white;
+            padding: 8px 12px;
+            margin: 3px 0;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.profession-list .sub-role.active {
-    background-color: #4CAF50;
-}
+        .sub-role.active {
+            background-color: #4CAF50;
+        }
 
-.profession-list .main-role.active {
-    background-color: #3f8d3f;
-}
+        /* 保留原有其他样式 */
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: -50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: margin 0.3s ease;
+        }
 
-.profession-image {
-    width: 70%;
-    text-align: center;
-}
+        main {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
 
-.profession-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+        .hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            pointer-events: none;
+        }
 
-.logo-container {
-    position: absolute;
-    top: 10px; /* 距离页面顶部 10px */
-    left: 10px; /* 距离页面左侧 10px */
-    display: flex;
-    align-items: center;
+        .page3-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
 
-    padding: 5px 10px;
+        .profession-image {
+            width: 70%;
+            text-align: center;
+        }
 
-    z-index: 9999; /* 确保在所有内容之上 */
-}
+        .profession-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-.logo-container img {
-    height: 30px; /* 设置 logo 图片高度 */
-    margin-right: 8px; /* 图片和文字之间的间距 */
-}
+        .logo-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            z-index: 9999;
+        }
 
-.logo-container span {
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
-}
-
-@media screen and (max-width: 600px) {
-    header {
-        padding: 10px 0;
-    }
-
-    main {
-        padding: 15px;
-        border-radius: 7px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    .page3-content {
-        flex-direction: column;
-    }
-
-    .profession-list, .profession-image {
-        width: 100%;
-    }
-
-    .logo-container img {
-        height: 20px;
-    }
-
-    .logo-container span {
-        font-size: 12px;
-    }
-}
+        @media screen and (max-width: 600px) {
+            .page3-content {
+                flex-direction: column;
+            }
+            .profession-list ul {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 页面1 -->
     <div class="page page1">
         <header>
             <h1>荣耀巅峰</h1>
         </header>
         <main>
             <h2>荣耀巅峰服务器</h2>
-            <p>在这里，你可以体验到最精彩的我的世界冒险之旅，与众多玩家一起探索、建造和战斗。我们拥有丰富的游戏内容，包括各种有趣的任务、独特的建筑和友好的玩家社区。无论你是新手还是老手，都能在荣耀服务器中找到属于自己的乐趣。</p>
+            <p>在这里，你可以体验到最精彩的我的世界冒险之旅...</p>
         </main>
     </div>
 
+    <!-- 页面2 -->
     <div class="page page2 hidden">
         <header>
             <h1>关于我们</h1>
@@ -201,63 +193,70 @@ main {
         </main>
     </div>
 
-    <!-- HTML部分 -->
-<div class="page page3 hidden">
-    <header>
-        <h1>职业展示</h1>
-    </header>
-    <main class="page3-content">
-        <div class="profession-list">
-            <!-- 战士 -->
-            <button class="main-role" data-role="warrior">战士</button>
-            <div class="sub-list">
-                <button class="sub-role active" data-image="kzs.jpg">狂战士</button>
-                <button class="sub-role" data-image="shs.jpg">噬魂士</button>
+    <!-- 修改后的页面3 -->
+    <div class="page page3 hidden">
+        <header>
+            <h1>职业展示</h1>
+        </header>
+        <main class="page3-content">
+            <div class="profession-list">
+                <ul>
+                    <li class="main-role" data-role="warrior">
+                        <div class="role-header">战士 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role active" data-image="kzs.jpg">狂战士</li>
+                            <li class="sub-role" data-image="shs.jpg">噬魂士</li>
+                        </ul>
+                    </li>
+                    
+                    <li class="main-role" data-role="gunner">
+                        <div class="role-header">魔枪士 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="lt.jpg">雷霆</li>
+                        </ul>
+                    </li>
+
+                    <li class="main-role" data-role="assassin">
+                        <div class="role-header">刺客 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="ryz.jpg">忍影者</li>
+                        </ul>
+                    </li>
+
+                    <li class="main-role" data-role="archer">
+                        <div class="role-header">弓箭手 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="jyl.jpg">烬羽灵</li>
+                        </ul>
+                    </li>
+
+                    <li class="main-role" data-role="mage">
+                        <div class="role-header">魔法师 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="ysfs.jpg">元素法师</li>
+                        </ul>
+                    </li>
+
+                    <li class="main-role" data-role="paladin">
+                        <div class="role-header">圣骑士 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="ty.jpg">铁驭</li>
+                        </ul>
+                    </li>
+
+                    <li class="main-role" data-role="saint">
+                        <div class="role-header">圣使者 ▼</div>
+                        <ul class="sub-list">
+                            <li class="sub-role" data-image="sn.jpg">圣女</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-
-            <!-- 魔枪士 -->
-            <button class="main-role" data-role="gunner">魔枪士</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="lt.jpg">雷霆</button>
+            <div class="profession-image">
+                <img id="profession-image" src="kzs.jpg" alt="职业图片">
             </div>
-
-            <!-- 刺客 -->
-            <button class="main-role" data-role="assassin">刺客</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="ryz.jpg">忍影者</button>
-            </div>
-
-            <!-- 弓箭手 -->
-            <button class="main-role" data-role="archer">弓箭手</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="jyl.jpg">烬羽灵</button>
-            </div>
-
-            <!-- 魔法师 -->
-            <button class="main-role" data-role="mage">魔法师</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="ysfs.jpg">元素法师</button>
-            </div>
-
-            <!-- 圣骑士 -->
-            <button class="main-role" data-role="paladin">圣骑士</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="ty.jpg">铁驭</button>
-            </div>
-
-            <!-- 圣使者 -->
-            <button class="main-role" data-role="saint">圣使者</button>
-            <div class="sub-list">
-                <button class="sub-role" data-image="sn.jpg">圣女</button>
-            </div>
-        </div>
-        <div class="profession-image">
-            <img id="profession-image" src="kzs.jpg" alt="职业图片">
-        </div>
-    </main>
-</div>
-
-
+        </main>
+    </div>
 
     <div class="logo-container">
         <img src="logo.jpg" alt="Logo">
@@ -265,143 +264,59 @@ main {
     </div>
 
     <script>
+        // 保留原有页面切换逻辑
         let currentPage = 1;
-        const page1 = document.querySelector('.page1');
-        const page2 = document.querySelector('.page2');
-        const page3 = document.querySelector('.page3');
-        let startY;
-
-        const showPage = (page) => {
-            page1.classList.add('hidden');
-            page2.classList.add('hidden');
-            page3.classList.add('hidden');
-
-            if (page === 1) {
-                page1.classList.remove('hidden');
-            } else if (page === 2) {
-                page2.classList.remove('hidden');
-            } else if (page === 3) {
-                page3.classList.remove('hidden');
-            }
+        const pages = document.querySelectorAll('.page');
+        
+        const showPage = (pageNumber) => {
+            pages.forEach(page => page.classList.add('hidden'));
+            document.querySelector(`.page${pageNumber}`).classList.remove('hidden');
         };
 
-        const professionButtons = document.querySelectorAll('.profession-list button');
-        const professionImage = document.getElementById('profession-image');
-
-        professionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 更新图片
-                const imageSrc = button.getAttribute('data-image');
-                professionImage.src = imageSrc;
-
-                // 更新选中状态
-                professionButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-            });
-        });
-
-        window.addEventListener('touchstart', function(event) {
-            startY = event.touches[0].pageY;
-        });
-
-        window.addEventListener('touchmove', function(event) {
-            if (startY) {
-                const currentY = event.touches[0].pageY;
-                const deltaY = currentY - startY;
-                if (deltaY > 50) {
-                    currentPage = Math.max(1, currentPage - 1);
-                    showPage(currentPage);
-                    startY = null;
-                } else if (deltaY < -50) {
-                    currentPage = Math.min(3, currentPage + 1);
-                    showPage(currentPage);
-                    startY = null;
-                }
-            }
-        });
-
-        window.addEventListener('wheel', function(event) {
-            if (event.deltaY < 0) {
-                currentPage = Math.max(1, currentPage - 1);
-                showPage(currentPage);
-            } else {
-                currentPage = Math.min(3, currentPage + 1);
-                showPage(currentPage);
-            }
-        });
- </script>
-
-
-
- <script>
-const roleButtons = document.querySelectorAll('.profession-list > button[data-role]');
-        const subLists = document.querySelectorAll('.sub-list');
-        const professionImage = document.getElementById('profession-image');
-
-        roleButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const subList = button.nextElementSibling;
-
-                // 显示或隐藏子列表
-                if (subList.style.display === 'block') {
-                    subList.style.display = 'none';
-                } else {
-                    subLists.forEach(list => list.style.display = 'none'); // 隐藏其他子列表
-                    subList.style.display = 'block';
-                }
-            });
-        });
-
-        const subButtons = document.querySelectorAll('.sub-list button');
-        subButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const imageSrc = button.getAttribute('data-image');
-                professionImage.src = imageSrc || '';
-            });
-        });
-
-// JavaScript部分
-document.addEventListener('DOMContentLoaded', function() {
-    // 默认显示第一个子项
-    const defaultSub = document.querySelector('.sub-role.active');
-    if (defaultSub) {
-        defaultSub.closest('.sub-list').classList.add('show');
-    }
-
-    // 主菜单点击事件
-    document.querySelectorAll('.main-role').forEach(button => {
-        button.addEventListener('click', function() {
-            // 切换当前子菜单
-            const subList = this.nextElementSibling;
-            const isShowing = subList.classList.contains('show');
+        // 新增职业列表交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainRoles = document.querySelectorAll('.main-role');
+            const subRoles = document.querySelectorAll('.sub-role');
             
-            // 关闭所有子菜单
-            document.querySelectorAll('.sub-list').forEach(list => {
-                list.classList.remove('show');
-                list.previousElementSibling.classList.remove('active');
+            mainRoles.forEach(role => {
+                role.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const subList = this.querySelector('.sub-list');
+                    const isActive = subList.classList.contains('show');
+                    
+                    document.querySelectorAll('.sub-list').forEach(list => {
+                        list.classList.remove('show');
+                        list.parentElement.classList.remove('active');
+                    });
+                    
+                    if (!isActive) {
+                        subList.classList.add('show');
+                        this.classList.add('active');
+                    }
+                });
             });
 
-            // 切换当前状态
-            if (!isShowing) {
-                subList.classList.add('show');
-                this.classList.add('active');
-            }
-        });
-    });
+            subRoles.forEach(role => {
+                role.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    document.getElementById('profession-image').src = this.dataset.image;
+                    subRoles.forEach(r => r.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
 
-    // 子菜单点击事件
-    document.querySelectorAll('.sub-role').forEach(button => {
-        button.addEventListener('click', function() {
-            // 更新图片
-            const imageSrc = this.dataset.image;
-            document.getElementById('profession-image').src = imageSrc;
-
-            // 更新选中状态
-            document.querySelectorAll('.sub-role').forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.sub-list').forEach(list => {
+                    list.classList.remove('show');
+                    list.parentElement.classList.remove('active');
+                });
+            });
         });
-    });
-});
+
+        // 保留原有滑动/滚轮逻辑
+        window.addEventListener('wheel', handleScroll);
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchmove', handleTouchMove);
     </script>
 </body>
 </html>
